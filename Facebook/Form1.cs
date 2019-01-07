@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,8 @@ namespace Facebook
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Connect(); 
+
+            Connect();
         }
         private void Connect()
         {
@@ -32,9 +34,12 @@ namespace Facebook
             if (NullControl(email, password))
             {
 
-                selenium = new Selenium("http://facebook.com", email_txt.Text, password_txt.Text);
-                //Authanticated obje = new Authanticated();
-                //obje.ShowDialog();
+                selenium = new Selenium("http://facebook.com");
+                selenium.Login(email_txt.Text,password_txt.Text);
+                
+                Authanticated obje = new Authanticated();
+                obje.ShowDialog();
+                this.Close();
             }
         }
         private void email_txt_KeyUp(object sender, KeyEventArgs e)
@@ -51,9 +56,9 @@ namespace Facebook
                 Connect();
             }
         }
-        private bool NullControl(string email,string pass)
+        private bool NullControl(string email, string pass)
         {
-            if(email.Equals("") || pass.Equals(""))
+            if (email.Equals("") || pass.Equals(""))
             {
                 MessageBox.Show("please fill");
                 return false;
@@ -62,7 +67,7 @@ namespace Facebook
             {
                 return true;
             }
-                
+
         }
     }
 }
