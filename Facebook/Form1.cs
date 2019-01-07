@@ -23,7 +23,7 @@ namespace Facebook
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Connect();
+            Connect(); 
         }
         private void Connect()
         {
@@ -33,8 +33,9 @@ namespace Facebook
             {
 
                 selenium = new Selenium("http://facebook.com", email_txt.Text, password_txt.Text);
+                //Authanticated obje = new Authanticated();
+                //obje.ShowDialog();
             }
-            
         }
         private void email_txt_KeyUp(object sender, KeyEventArgs e)
         {

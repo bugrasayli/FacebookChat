@@ -24,3 +24,4 @@ C:\Users\cobhc\OneDrive\Masaüstü\git\Facebook\Facebook\obj\Debug\Facebook.cspr
 C:\Users\cobhc\OneDrive\Masaüstü\git\Facebook\Facebook\obj\Debug\Facebook.csproj.CopyComplete
 C:\Users\cobhc\OneDrive\Masaüstü\git\Facebook\Facebook\obj\Debug\Facebook.exe
 C:\Users\cobhc\OneDrive\Masaüstü\git\Facebook\Facebook\obj\Debug\Facebook.pdb
+C:\Users\cobhc\OneDrive\Masaüstü\git\Facebook\Facebook\obj\Debug\Facebook.Authanticated.resources
