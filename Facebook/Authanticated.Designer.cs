@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.person = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.person)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // person
             // 
-            this.button1.Location = new System.Drawing.Point(71, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Get HTML";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.person.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.person.Location = new System.Drawing.Point(68, 41);
+            this.person.Name = "person";
+            this.person.Size = new System.Drawing.Size(374, 150);
+            this.person.TabIndex = 0;
             // 
             // Authanticated
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 450);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(560, 213);
+            this.Controls.Add(this.person);
             this.Name = "Authanticated";
             this.Text = "Auhtanticated";
+            this.Load += new System.EventHandler(this.Authanticated_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.person)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView person;
     }
 }

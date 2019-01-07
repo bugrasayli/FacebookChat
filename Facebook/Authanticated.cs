@@ -13,6 +13,7 @@ namespace Facebook
 {
     public partial class Authanticated : Form
     {
+        List<person> people;
         public Authanticated()
         {
             InitializeComponent();
@@ -22,9 +23,14 @@ namespace Facebook
         {
 
         }
-        private void Connect()
+        public void getList(List<person> people)
         {
-            
+            this.people = people;
+            person.DataSource = people;
+        }
+
+        private void Authanticated_Load(object sender, EventArgs e)
+        {
         }
     }
 }

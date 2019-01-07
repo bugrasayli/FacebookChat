@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,7 @@ namespace Facebook
     {
         private string email;
         private string password;
+        private List<person> people;
         Selenium selenium;
         public Form1()
         {
@@ -35,10 +37,15 @@ namespace Facebook
             {
 
                 selenium = new Selenium("http://facebook.com");
-                selenium.Login(email_txt.Text,password_txt.Text);
+                people = selenium.Login(email_txt.Text,password_txt.Text);
                 
                 Authanticated obje = new Authanticated();
-                obje.ShowDialog();
+                
+                Thread thread = new Thread(()=>obje.getList(people));
+                Thread thread2 = new Thread(() => obje.ShowDialog());
+                thread.Start();
+                thread2.Start();
+
                 this.Close();
             }
         }
