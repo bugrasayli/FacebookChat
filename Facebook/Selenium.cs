@@ -13,7 +13,7 @@ namespace FaceBook
 {
     public class Selenium
     {
-        private ChromeDriver driver;
+        public ChromeDriver driver;
         private ChromeOptions options;
         private FileOpp file;
         private Html html;
@@ -36,23 +36,21 @@ namespace FaceBook
             driver.Navigate().GoToUrl(Url);
             driver.Manage().Window.Maximize();
         }
-        public List<person> Login(string Password, string EMail)
+        public List<person> Login( string EMail,string Password)
         {
             var password = driver.FindElementById("pass");
             var email = driver.FindElementById("email");
             var login = driver.FindElementById("loginbutton");
 
 
-            password.SendKeys("say_say0909");
-            email.SendKeys("bugrasayli@gmail.com");
+            password.SendKeys(Password);
+            email.SendKeys(EMail);
             login.Click();
             System.Threading.Thread.Sleep(3000);
 
             string asdf = driver.PageSource;
             html = new Html(asdf);
             people =html.Parse();
-            driver.Close();
-            driver.Dispose();
             return people;
         }
         public List<person> Login()

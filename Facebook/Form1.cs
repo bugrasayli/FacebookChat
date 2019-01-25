@@ -1,14 +1,6 @@
 ﻿using FaceBook;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Facebook
@@ -18,6 +10,7 @@ namespace Facebook
         private string email;
         private string password;
         private List<person> people;
+        private Database db;
         Selenium selenium;
         public Form1()
         {
@@ -26,7 +19,6 @@ namespace Facebook
         }
         private void button1_Click(object sender, EventArgs e)
         {
-
             Connect();
         }
         private void Connect()
@@ -37,18 +29,33 @@ namespace Facebook
             {
 
                 selenium = new Selenium("http://facebook.com");
-                people = selenium.Login(email_txt.Text,password_txt.Text);
-                
-                Authanticated obje = new Authanticated();
-                
-                Thread thread = new Thread(()=>obje.getList(people));
-                Thread thread2 = new Thread(() => obje.ShowDialog());
-                thread.Start();
-                thread2.Start();
 
-                this.Close();
+                people = selenium.Login(email_txt.Text, password_txt.Text);
+                db = new Database();
+                threading();
             }
         }
+        public void threading()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                System.Threading.Thread.Sleep(5000);
+                selenium.driver.Navigate().Refresh();
+                Html obje = new Html(selenium.driver.PageSource);
+                List<person> people = new List<person>();
+                people = obje.Parse();
+                foreach (var person in people)
+                {
+                    db.insertTime(person);
+                }
+            }
+        }
+
+
+
+
+
+
         private void email_txt_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
